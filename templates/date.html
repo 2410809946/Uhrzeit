@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktuelles Datum</title>
+</head>
+<body>
+    <h1>Aktuelles Datum</h1>
+    <p id="date"></p>
+    <a href="/">Zur aktuellen Uhrzeit</a>
+    <script>
+        async function fetchDate() {
+            const response = await fetch('/date');
+            const data = await response.json();
+            document.getElementById('date').innerText = data.date;
+        }
+        setInterval(fetchDate, 1000);
+        fetchDate();
+    </script>
+</body>
+</html>
